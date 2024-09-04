@@ -44,8 +44,8 @@ export const create = async (request, response) => {
     }
 
 
-    if(!imagem)
-      imagem = "caminhodefault"
+    // if(!imagem)
+    //   imagem = "caminhodefault"
   
     const novopost = {
       titulo,

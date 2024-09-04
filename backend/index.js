@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 3333;
 const app = express();
 
 // Importar conexão do banco
-// import conn from "./config/conn.js";
+
+import conn from "./config/conn.js";
 
 // 3 Middlewares
 app.use(cors());
