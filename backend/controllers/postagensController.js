@@ -60,4 +60,58 @@ export const create = async (request, response) => {
       console.error(error);
       response.status(500).json({ Err: "Erro ao cadastrar os posts" });
     }
+<<<<<<< Updated upstream
+=======
+  };
+
+export const showall = async (request, response) => {
+
+    const page = parseInt(request.query.page) || 1;
+    const limit = parseInt(request.query.limit) || 10;
+    const offset = (page - 1) * 10;
+    try {
+      const postagens = await Posts.findAndCountAll({
+        limit,
+        offset,
+      });
+      const totalPaginas = Math.ceil(postagens.count / limit);
+      response.status(200).json({
+        totalTarefas: postagens.count,
+        totalPaginas,
+        paginaAtual: page,
+        itemsPorPagina: limit,
+        proximaPagina:
+          totalPaginas === 0
+            ? null
+            : `http://localhost:3333/tarefas?page=${page + 1}`,
+        postagens: postagens.rows,
+      });
+    } catch (error) {
+      response.status(500).json({ msg: "Erro ao buscar tarefas" });
+    }
+  };
+export const getbyid = async (request, response) => {
+
+   const id = request.params.id 
+   console.log(id)
+    try {
+      const postagens = await Posts.findOne({
+        where: {id},
+        raw:true,
+      });
+
+
+      console.log(postagens)
+      if(postagens){
+      response.status(200).json({
+        postagens: postagens,
+      });
+    }
+    else
+      response.status(404).json({ msg: "Não existe esse post" });
+  
+    } catch (error) {
+      response.status(500).json({ msg: "Erro ao buscar postagens" });
+    }
+>>>>>>> Stashed changes
   };
