@@ -60,8 +60,6 @@ export const create = async (request, response) => {
       console.error(error);
       response.status(500).json({ Err: "Erro ao cadastrar os posts" });
     }
-<<<<<<< Updated upstream
-=======
   };
 
 export const showall = async (request, response) => {
@@ -113,5 +111,4 @@ export const getbyid = async (request, response) => {
     } catch (error) {
       response.status(500).json({ msg: "Erro ao buscar postagens" });
     }
->>>>>>> Stashed changes
   };
